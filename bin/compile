@@ -30,7 +30,7 @@ BUILD_PATH=""
 # run migrations by adding a release step to your Procfile:
 # `release: ./target/release/diesel migration run`
 RUST_INSTALL_DIESEL=0
-RUST_INSTALL_PROXY=1
+RUST_INSTALL_SHADOWSOCKS=0
 # These flags are passed to `cargo install diesel`, e.g. '--no-default-features --features postgres'
 DIESEL_FLAGS=""
 # Default build flags to pass to `cargo build`.
@@ -144,6 +144,6 @@ fi
 
 if [ $RUST_INSTALL_PROXY -eq 1 ]; then
   echo "-----> Installing shadowsocks"
-  cargo install shadowsocks-rust --release --no-default-features --features=aes-cfb || echo "already installed"
+  cargo install shadowsocks-rust --no-default-features --features=aes-cfb || echo "already installed"
   cp $(which ssserver) target/release/
 fi
